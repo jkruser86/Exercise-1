@@ -26,10 +26,11 @@ public class User {
      * @param lastName  the last name
      * @param userid    the userid
      */
-    public User(String firstName, String lastName, String userid) {
+    public User(String firstName, String lastName, String userid, Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userid = userid;
+        this.dateOfBirth = dateOfBirth;
     }
 
     /**
