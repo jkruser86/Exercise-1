@@ -1,0 +1,2 @@
+The sql statement was: SELECT * FROM users
+2017-09-05 21:15:20,597 0    [http-nio-8080-exec-1] INFO  edu.matc.persistence.UserData  - The sql statement was: SELECT * FROM users
