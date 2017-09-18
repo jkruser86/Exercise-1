@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Jamie Kruser
  */
-public class UserData {
+public class UserDao {
 
     private final Logger logger = Logger.getLogger(this.getClass());
 
