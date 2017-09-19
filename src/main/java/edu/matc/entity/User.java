@@ -1,5 +1,10 @@
 package edu.matc.entity;
 
+import edu.matc.utility.LocalDateAttributeConverter;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -7,11 +12,25 @@ import java.util.*;
  *
  * @author pwaite
  */
+@Entity
+@Table(name = "users")
+
 public class User {
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private String userid;
-    private Date dateOfBirth;
+
+    @Column(name = "date_of_birth")
+    @Convert(converter = LocalDateAttributeConverter.class)
+    private LocalDate dateOfBirth;
 
     /**
      * Instantiates a new User.
@@ -26,7 +45,7 @@ public class User {
      * @param lastName  the last name
      * @param userid    the userid
      */
-    public User(String firstName, String lastName, String userid, Date dateOfBirth) {
+    public User(String firstName, String lastName, String userid, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userid = userid;
@@ -92,7 +111,7 @@ public class User {
      *
      * @return the dateOfBirth
      */
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -101,7 +120,7 @@ public class User {
      *
      * @param dateOfBirth the dateOfBirth
      */
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -124,21 +143,19 @@ public class User {
 
     public int age() {
         int userAge;
-        Calendar birthDay = Calendar.getInstance();
-        birthDay.setTime(dateOfBirth);
 
-        Calendar currentDate = Calendar.getInstance();
+        LocalDate currentDate = LocalDate.now();
 
-        if (birthDay.get(Calendar.MONTH) == currentDate.get(Calendar.MONTH)) {
-            if (birthDay.get(Calendar.DATE) > currentDate.get(Calendar.DATE)) {
-                userAge = currentDate.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR) - 1;
+        if (dateOfBirth.getMonthValue() == currentDate.getMonthValue()) {
+            if (dateOfBirth.getDayOfMonth() > currentDate.getDayOfMonth()) {
+                userAge = currentDate.getYear() - dateOfBirth.getYear() - 1;
             } else {
-                userAge = currentDate.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR);
+                userAge = currentDate.getYear() - dateOfBirth.getYear() - 1;
             }
-        } else if (birthDay.get(Calendar.MONTH) > currentDate.get(Calendar.MONTH)) {
-            userAge = currentDate.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR) - 1;
+        } else if (dateOfBirth.getMonthValue() > currentDate.getMonthValue()) {
+            userAge = currentDate.getYear() - dateOfBirth.getYear() - 1;
         } else {
-            userAge = currentDate.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR);
+            userAge = currentDate.getYear() - dateOfBirth.getYear();
         }
 
         return userAge;

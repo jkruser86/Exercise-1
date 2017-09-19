@@ -1,3 +1,8 @@
 The sql statement was: SELECT * FROM users
 2017-09-05 21:15:20,597 0    [http-nio-8080-exec-1] INFO  edu.matc.persistence.UserDao  - The sql statement was: SELECT * FROM users
 2017-09-17 23:47:55,890 0    [main] INFO  edu.matc.persistence.UserDao  - The sql statement was: SELECT * FROM users
+2017-09-18 22:59:35,541 0    [main] INFO  edu.matc.persistence.UserDao  - The sql statement was: SELECT * FROM users
+2017-09-18 23:01:50,885 0    [http-nio-8080-exec-3] INFO  edu.matc.persistence.UserDao  - The sql statement was: SELECT * FROM users WHERE last_name = 'Coyne'
+2017-09-18 23:02:05,811 14926 [http-nio-8080-exec-4] INFO  edu.matc.persistence.UserDao  - The sql statement was: SELECT * FROM users
+2017-09-18 23:04:12,532 0    [main] INFO  edu.matc.persistence.UserDao  - The sql statement was: SELECT * FROM users
+2017-09-18 23:04:14,477 1945 [main] INFO  edu.matc.persistence.UserDao  - The sql statement was: SELECT * FROM users WHERE last_name = 'Coyne'

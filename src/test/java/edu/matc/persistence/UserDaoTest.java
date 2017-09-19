@@ -26,6 +26,9 @@ public class UserDaoTest {
 
     @Test
     public void lastNameSearchTest() throws Exception {
+        List<User> users = userDao.lastNameSearch("Coyne");
+
+        assertEquals("Only 1 user should be found", 1, users.size());
     }
 
 }

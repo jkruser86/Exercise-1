@@ -52,7 +52,7 @@ public class UserDao {
         user.setLastName(results.getString("last_name"));
         user.setFirstName(results.getString("first_name"));
         user.setUserid(results.getString("id"));
-        user.setDateOfBirth(results.getDate("date_of_birth"));
+        user.setDateOfBirth(results.getDate("date_of_birth").toLocalDate());
         return user;
     }
 
